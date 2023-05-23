@@ -144,7 +144,7 @@ char **strtow2(char *, char);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
-void ffree(char **);
+void ffree(void **ptr);
 void *_realloc(void *, unsigned int, unsigned int);
 
 
@@ -181,6 +181,7 @@ void sigintHandler(int);
 void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
+void ffree(void **ptr);
 
 /* toem_environ.c */
 char *_getenv(info_t *, const char *);

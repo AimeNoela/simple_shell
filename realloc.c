@@ -22,13 +22,13 @@ char *_memset(char *s, char b, unsigned int n)
  */
 void ffree(void **pp)
 {
-	char **a = (char **)pp;
+	char **a = pp;
 
 	if (!pp)
 		return;
-	while (*a)
-		free(*a++);
-	free(pp);
+	while (*pp)
+		free(*pp++);
+	free(a);
 }
 
 /**

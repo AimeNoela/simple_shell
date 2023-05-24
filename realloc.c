@@ -20,9 +20,9 @@ char *_memset(char *s, char b, unsigned int n)
  * ffree - frees string of strings
  * @pp: String of strings
  */
-void ffree(char ***pp)
+void ffree(void **pp)
 {
-	char ***a = pp;
+	char **a = pp;
 
 	if (!pp)
 		return;

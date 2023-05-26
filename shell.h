@@ -11,15 +11,23 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
+
+/* for read/write buffers */
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
+
+/* for command chaining */
 #define CMD_NORM	0
 #define CMD_OR		1
 #define CMD_AND		2
 #define CMD_CHAIN	3
+
+/* for convert_number() */
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
+
+/* 1 if using system getline() */
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
@@ -30,9 +38,9 @@ extern char **environ;
 
 
 /**
- * struct liststr - Singly linked list
- * @num: number field
- * @str: the string
+ * struct liststr - singly linked list
+ * @num: the number field
+ * @str: a string
  * @next: points to the next node
  */
 typedef struct liststr
@@ -92,9 +100,9 @@ typedef struct passinfo
 		0, 0, 0}
 
 /**
- * struct builtin - contains the builtin string and related function
- * @type: builtin command flag
- * @func: function
+ * struct builtin - contains a builtin string and related function
+ * @type: the builtin command flag
+ * @func: the function
  */
 typedef struct builtin
 {
@@ -103,32 +111,33 @@ typedef struct builtin
 } builtin_table;
 
 
-
+/* toem_shloop.c */
 int hsh(info_t *, char **);
 int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
-
+/* toem_parser.c */
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
-
+/* loophsh.c */
 int loophsh(char **);
 
+/* toem_errors.c */
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
-
+/* toem_string.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
-
+/* toem_string1.c */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
@@ -139,24 +148,25 @@ char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
+/* toem_tokenizer.c */
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
-void ffree(void **ptr);
+void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
-
+/* toem_memory.c */
 int bfree(void **);
 
-
+/* toem_atoi.c */
 int interactive(info_t *);
 int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
-
+/* toem_errors1.c */
 int _erratoi(char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
@@ -181,7 +191,6 @@ void sigintHandler(int);
 void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
-void ffree(void **ptr);
 
 /* toem_environ.c */
 char *_getenv(info_t *, const char *);

@@ -2,7 +2,7 @@
 
 /**
  * interactive - Returns true if shell is in interactive mode.
- * @info: Struct address
+ * @info: Struct address to consider
  *
  * Return: 1. if is in interactive mode, 0 if otherwise
  */
@@ -13,8 +13,8 @@ int interactive(info_t *info)
 
 /**
  * is_delim - Checks if the character is a delimeter
- * @c: The character to be checked
- * @delim: The delimeter string
+ * @c: character checked
+ * @delim: delimeter string
  * Return: if true 1., if false 0
  */
 int is_delim(char c, char *delim)
@@ -27,7 +27,7 @@ int is_delim(char c, char *delim)
 
 /**
  * _isalpha - Checks for the alphabetic char
- * @c: The char to input
+ * @c: input char considered
  * Return: if c is alphabetic1., if otherwise 0
  */
 

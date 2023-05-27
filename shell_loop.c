@@ -12,6 +12,7 @@ int hsh(info_t *info, char **av)
 	ssize_t r = 0;
 	int builtin_ret = 0;
 
+	/* allows repeated block exc of code when specified condition remains true */
 	while (r != -1 && builtin_ret != -2)
 	{
 		clear_info(info);

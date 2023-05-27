@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * get_history_file - Gets history file
+ * get_history_file - Gets history file to consider
  * @info: the parameter struct
  *
  * Return: allocated string that contains the history file
@@ -13,7 +13,7 @@ char *get_history_file(info_t *info)
 
 	dir = _getenv(info, "HOME=");
 	if (!dir)
-		return (NULL);
+		return (NULL); /* when the first consition are met */
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
@@ -36,6 +36,7 @@ int write_history(info_t *info)
 	char *filename = get_history_file(info);
 	list_t *node = NULL;
 
+	/* introducing the if loop for condition checking */
 	if (!filename)
 		return (-1);
 

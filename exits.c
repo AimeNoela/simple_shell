@@ -13,6 +13,7 @@ char *_strncpy(char *dest, char *src, int n)
 	char *s = dest;
 
 	i = 0;
+/* introducing while loop for specified condition */
 	while (src[i] != '\0' && i < n - 1)
 	{
 		dest[i] = src[i];

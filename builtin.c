@@ -17,6 +17,7 @@ int _myexit(info_t *info)
 		if (exitcheck == -1)
 		{
 			info->status = 2;
+			/* assign the print value */
 			print_error(info, "Illegal number: ");
 			_eputs(info->argv[1]);
 			_eputchar('\n');
@@ -39,6 +40,7 @@ int _mycd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
+	/* declaration of int and char */
 
 	s = getcwd(buffer, 1024);
 	if (!s)
